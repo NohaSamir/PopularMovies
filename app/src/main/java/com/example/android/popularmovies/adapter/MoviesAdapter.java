@@ -76,7 +76,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         holder.movieTitle.setText(movies.get(position).getTitle());
         */
 
-        //ToDo 14 : set my handler
+        //ToDo 16 : set my handler
         holder.itemsBinding.setClickHandler(new ClickHandlers());
 
       /*  holder.moviesLayout.setOnClickListener(new View.OnClickListener() {

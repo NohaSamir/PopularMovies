@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!--ToDo 2 : We will start with Movie details view-->
     <!--ToDo 3: define your data-->
     <data>
 

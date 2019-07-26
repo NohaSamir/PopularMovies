@@ -2,6 +2,8 @@
 <!--ToDo 15: bind movie recycler using data binding-->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--ToDo 18: define adapter variable-->
     <data>
         <variable
             name="adapter"
@@ -13,6 +15,7 @@
         android:layout_height="match_parent"
         tools:context=".activity.MainActivity">
 
+        <!--ToDo 19 : set adapter with adapter variable-->
         <android.support.v7.widget.RecyclerView
             android:id="@+id/movies_recycler_view"
             android:layout_width="match_parent"

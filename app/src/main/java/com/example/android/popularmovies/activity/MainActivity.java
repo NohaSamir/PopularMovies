@@ -5,7 +5,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 
 import com.example.android.popularmovies.R;
 import com.example.android.popularmovies.adapter.MoviesAdapter;
@@ -23,6 +22,8 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    //ToDO 17 : set adapter using data binding
+
     private static String API_KEY;
     private Context mContext;
 
@@ -30,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //ToDo 16: Create instance of data binding
+        //ToDo 20: Create instance of data binding
         //setContentView(R.layout.activity_main);
         //final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.movies_recycler_view);
 
-        final ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this , R.layout.activity_main);
+        final ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         API_KEY = getString(R.string.api_key);
         mContext = this;
@@ -56,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 if (response.body() != null) {
                     movies = response.body().getResults();
 
-                    //ToDo 17: set recycler adapter
-                    activityMainBinding.setAdapter(new MoviesAdapter(mContext , movies));
+                    //ToDo 21: set data binding adapter with new instance of Movie Adapter
+                    activityMainBinding.setAdapter(new MoviesAdapter(mContext, movies));
                     //recyclerView.setAdapter(new MoviesAdapter(mContext, movies));
                 }
             }
@@ -68,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
 }

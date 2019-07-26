@@ -14,6 +14,8 @@ import com.example.android.popularmovies.databinding.ActivityMovieDetailsBinding
 import com.example.android.popularmovies.model.Movie;
 
 public class MovieDetails extends AppCompatActivity {
+
+
     private Context context;
     private static String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
     private ImageView moviePoster;
@@ -64,6 +66,7 @@ public class MovieDetails extends AppCompatActivity {
 
             //ToDo 8 : pass the model to the defined variable inside  xml
             detailsBinding.setMovie(movie);
+
         }
     }
 
