@@ -16,7 +16,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    //ToDo 1: enable data binding inside gradle
+
     dataBinding { enabled  = true }
 }
 

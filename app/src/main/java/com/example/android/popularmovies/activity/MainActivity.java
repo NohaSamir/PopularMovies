@@ -30,20 +30,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //ToDo 16: Create instance of data binding
-        //setContentView(R.layout.activity_main);
-        //final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.movies_recycler_view);
-
         final ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this , R.layout.activity_main);
-
         API_KEY = getString(R.string.api_key);
         mContext = this;
-
-        /*
-        //move this lines to xml
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        */
 
         ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
 
@@ -55,10 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 List<Movie> movies = null;
                 if (response.body() != null) {
                     movies = response.body().getResults();
-
-                    //ToDo 17: set recycler adapter
                     activityMainBinding.setAdapter(new MoviesAdapter(mContext , movies));
-                    //recyclerView.setAdapter(new MoviesAdapter(mContext, movies));
                 }
             }
 
