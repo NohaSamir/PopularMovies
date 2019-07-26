@@ -1,14 +1,19 @@
 package com.example.android.popularmovies.model;
 
+import android.databinding.BindingAdapter;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Movie implements Parcelable {
+
+    private static final String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
     @SerializedName("poster_path")
     private String posterPath;
@@ -146,64 +151,9 @@ public class Movie implements Parcelable {
         }
     };
 
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
-    }
-
-    public void setAdult(boolean adult) {
-        this.adult = adult;
-    }
-
-    public void setOverview(String overview) {
-        this.overview = overview;
-    }
-
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public void setGenreIds(List<Integer> genreIds) {
-        this.genreIds = genreIds;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setOriginalTitle(String originalTitle) {
-        this.originalTitle = originalTitle;
-    }
-
-    public void setOriginalLanguage(String originalLanguage) {
-        this.originalLanguage = originalLanguage;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
-    }
-
-    public void setPopularity(Double popularity) {
-        this.popularity = popularity;
-    }
-
-    public void setVoteCount(Integer voteCount) {
-        this.voteCount = voteCount;
-    }
-
-    public void setVideo(Boolean video) {
-        this.video = video;
-    }
-
-    public void setVoteAverage(Double voteAverage) {
-        this.voteAverage = voteAverage;
-    }
 
     public String getPosterPath() {
-        return posterPath;
+        return IMAGE_BASE_URL + posterPath;
     }
 
     public boolean isAdult() {
@@ -256,5 +206,11 @@ public class Movie implements Parcelable {
 
     public Double getVoteAverage() {
         return voteAverage;
+    }
+
+    //ToDo 5: create method to load your image inside the model
+    @BindingAdapter("loadImage")
+    public static void loadImage(ImageView imageView, String url) {
+        Glide.with(imageView.getContext()).load(url).into(imageView);
     }
 }
