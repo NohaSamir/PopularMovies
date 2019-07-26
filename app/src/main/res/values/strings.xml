@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">PopularMovies</string>
-    <string name="api_key" translatable="false">e7201e72d293a8848ba2f49d145cbe94</string>
+    <string name="api_key" translatable="false"></string>
 </resources>
