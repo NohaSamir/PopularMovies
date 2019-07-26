@@ -1,6 +1,6 @@
 # Movies Application
 
-######  Simple Movies application , I will apply every architecture component on a separate branch with steps
+Simple Movies application , I will apply every architecture component on a separate branch with steps
 (Any beginner can follow me to learn all architecture component)
 
 -----------------------
@@ -25,7 +25,10 @@ http://api.themoviedb.org/3/movie/popular?api_key=[YOUR_API_KEY]
 
 Contain the source code of the application 
 
+--------------------------------
+
 ##   2-DataBinding Branch [tutorial](https://developer.android.com/topic/libraries/data-binding)
+
 The Data Binding Library is a support library that allows you to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically.
 
 
