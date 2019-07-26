@@ -24,7 +24,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
     private int rowLayout;
     private Context context;
     public static final String IMAGE_URL_BASE = "https://image.tmdb.org/t/p/w185";
-    
+
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout moviesLayout;
         TextView movieTitle;
@@ -64,12 +64,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
             public void onClick(View v) {
                 Intent intent = new Intent(context, MovieDetails.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("ID", movies.get(position).getId());
-                intent.putExtra("OverView", movies.get(position).getOverview());
-                intent.putExtra("ReleaseDate", movies.get(position).getReleaseDate());
-                intent.putExtra("Title", movies.get(position).getTitle());
-                intent.putExtra("PosterPath", movies.get(position).getPosterPath());
-                intent.putExtra("VoteAverage", movies.get(position).getVoteAverage());
+                intent.putExtra("Movie", movies.get(position));
                 context.startActivity(intent);
             }
         });
