@@ -1,28 +1,47 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/movies_layout"
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:minHeight="72dp"
-    android:padding="1dp">
+<!--//ToDo 9: apply same things on adapter layout-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/item_movie_poster"
+    <data>
+
+        <variable
+            name="movie"
+            type="com.example.android.popularmovies.model.Movie" />
+
+        <variable
+            name="clickHandler"
+            type="com.example.android.popularmovies.adapter.MoviesAdapter.ClickHandlers" />
+    </data>
+
+    <!-- //ToDo 15: handel click listener-->
+    <RelativeLayout
+        android:id="@+id/movies_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:layout_height="200dp"
+        android:minHeight="72dp"
+        android:onClick="@{() -> clickHandler.onClickMovie(movie)}"
+        android:padding="1dp">
+
+        <ImageView
+            android:id="@+id/item_movie_poster"
+            loadImage="@{movie.posterPath}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:paddingRight="16dp"
-            android:textStyle="bold"
+            android:text="@{movie.title}"
+            android:textAlignment="center"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
-            android:textAlignment="center"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
+            android:textStyle="bold" />
 
 
-</RelativeLayout>
+    </RelativeLayout>
+</layout>
