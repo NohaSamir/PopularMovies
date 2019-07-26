@@ -35,8 +35,7 @@ public class MovieDetails extends AppCompatActivity {
         movieRating = findViewById(R.id.Rate);
         movieOverview = findViewById(R.id.overView);
         movieReleaseDate = findViewById(R.id.ReleaseDate);
-
-
+        
         Intent intent = getIntent();
         if (intent != null) {
             movie = intent.getParcelableExtra("Movie");
