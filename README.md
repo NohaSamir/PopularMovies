@@ -21,6 +21,12 @@ http://api.themoviedb.org/3/movie/popular?api_key=[YOUR_API_KEY]
 
 --------------------------------
 
+##   master Branch 
+
+Contain the final code
+
+--------------------------------
+
 ##   1-BaseProject Branch
 
 Contain the source code of the application 
