@@ -25,6 +25,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
     private Context context;
     public static final String IMAGE_URL_BASE = "https://image.tmdb.org/t/p/w185";
 
+    
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
         RelativeLayout moviesLayout;
         TextView movieTitle;
