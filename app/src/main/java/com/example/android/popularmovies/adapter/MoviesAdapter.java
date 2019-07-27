@@ -64,5 +64,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
             MovieDetails.start(context, movie);
         }
     }
+
+    public void addItem(List<Movie> movies)
+    {
+        this.movies.addAll(movies);
+        notifyDataSetChanged();
+    }
 }
 

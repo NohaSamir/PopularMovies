@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><!--ToDo: Step2 wrap inside layout-->
+<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--ToDo 3: define your data-->
     <data>
 
         <variable
@@ -10,7 +9,6 @@
             type="com.example.android.popularmovies.model.Movie" />
     </data>
 
-    <!--ToDo 4: use your variable to bind your data-->
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
