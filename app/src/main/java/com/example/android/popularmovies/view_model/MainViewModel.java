@@ -9,8 +9,6 @@ On This branch we will develop the first one
 and develop the second feature on LiveData branch
 */
 
-//ToDo 2 : Implement Main View Model that is responsible for preparing data for the Main Activity that display list of movies
-
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -27,13 +25,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-//ToDo 3 : Make the class extended from View Model
-/*
- * In case you not need to pass data from the activity to View Model extend ViewModel
- * else You need to have a factory class for your ViewModel
- *
- * In our case we need to pass API_Key and so we will create MainViewModelFactory in To-Do 4 @{link MainViewModelFactory}
- */
 public class MainViewModel extends ViewModel {
 
     private static final String TAG = MainViewModel.class.getSimpleName();
@@ -41,12 +32,12 @@ public class MainViewModel extends ViewModel {
     private List<Movie> movies;
     private String apiKey;
 
-    //ToDo  5 : Define the constructor with the parameter needed
+
     MainViewModel(String apiKey) {
         this.apiKey = apiKey;
     }
 
-    //ToDo 6: Create fetch data listener
+
     public interface OnDataLoadListener {
 
         void onSuccess(List<Movie> movies);
@@ -54,7 +45,7 @@ public class MainViewModel extends ViewModel {
         void onFailure();
     }
 
-    //ToDo 7: Do an asynchronous operation to fetch movies.
+
     public void loadMovies(final OnDataLoadListener onDataLoadListener) {
         // we can copy it from the MainActivity
 
