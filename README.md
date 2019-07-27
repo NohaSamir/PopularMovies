@@ -37,7 +37,18 @@ Contain the source code of the application
 
 The Data Binding Library is a support library that allows you to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically.
 
+Note: That DataBindingRseult Branch contain the final result without ToDo 
 
+--------------------------------
+
+## 3- ViewModel Branch [tutorial](https://developer.android.com/topic/libraries/architecture/viewmodel)
+
+- The ViewModel class is designed to separate out view data ownership from UI controller logic.
+- The ViewModel class allows data to survive configuration changes such as screen rotations using LiveDate.
+
+On This branch we will develop the first one and develop the second feature on LiveData branch
+
+Note: you can accumulate on DataBindingRseult branch
 
 
 
