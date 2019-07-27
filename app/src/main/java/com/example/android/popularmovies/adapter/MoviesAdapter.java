@@ -57,7 +57,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         return movies.size();
     }
 
-
     public class ClickHandlers {
         public void onClickMovie(Movie movie) {
             MovieDetails.start(context, movie);
