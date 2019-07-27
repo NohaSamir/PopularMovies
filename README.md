@@ -37,7 +37,9 @@ Contain the source code of the application
 
 The Data Binding Library is a support library that allows you to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically.
 
-Note: That DataBindingRseult Branch contain the final result without ToDo 
+Note: That DataBinding Branch contail all ToDo steps
+and DataBindingRseult Branch contain the final result without ToDo 
+##### you can accumulate on BaseProject branch and follow ToDo steps
 
 --------------------------------
 
@@ -48,7 +50,7 @@ Note: That DataBindingRseult Branch contain the final result without ToDo
 
 On This branch we will develop the first one and develop the second feature on LiveData branch
 
-Note: you can accumulate on DataBindingRseult branch
+##### Note: you can accumulate on DataBindingRseult branch and follow ToDo steps
 
 
 
