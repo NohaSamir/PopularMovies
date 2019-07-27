@@ -1,5 +1,6 @@
-<!--//ToDo 9: apply same things on adapter layout-->
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -12,8 +13,8 @@
             type="com.example.android.popularmovies.adapter.MoviesAdapter.ClickHandlers" />
     </data>
 
-    <!-- //ToDo 15: handel click listener-->
-    <RelativeLayout
+
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/movies_layout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -30,18 +31,24 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:paddingRight="16dp"
+            android:background="@android:color/black"
+            android:lines="2"
+            android:gravity="center"
             android:text="@{movie.title}"
             android:textAlignment="center"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_movie_poster"
+            app:layout_constraintEnd_toEndOf="@+id/item_movie_poster"
+            app:layout_constraintStart_toStartOf="@+id/item_movie_poster" />
 
 
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>

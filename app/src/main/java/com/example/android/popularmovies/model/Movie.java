@@ -208,7 +208,6 @@ public class Movie implements Parcelable {
         return voteAverage;
     }
 
-    //ToDo 5: create method to load your image inside the model
     @BindingAdapter("loadImage")
     public static void loadImage(ImageView imageView, String url) {
         Glide.with(imageView.getContext()).load(url).into(imageView);
