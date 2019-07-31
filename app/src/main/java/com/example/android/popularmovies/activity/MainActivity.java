@@ -7,6 +7,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.example.android.popularmovies.R;
 import com.example.android.popularmovies.adapter.MoviesAdapter;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         API_KEY = getString(R.string.api_key);
         mContext = this;
+
         moviesAdapter = new MoviesAdapter(mMovies);
 
         final ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -76,7 +78,10 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.getMovies().observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(@Nullable List<Movie> movies) {
-                moviesAdapter.addItem(movies);
+                if (movies != null)
+                    moviesAdapter.addItem(movies);
+                else
+                    Toast.makeText(mContext, R.string.error, Toast.LENGTH_LONG).show();
             }
         });
 

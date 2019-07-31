@@ -15,6 +15,7 @@ public class MoviesResponse {
     @SerializedName("total_pages")
     private int totalPages;
 
+
     public void setPage(int page) {
         this.page = page;
     }

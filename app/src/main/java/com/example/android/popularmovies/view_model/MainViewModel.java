@@ -18,7 +18,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-
 public class MainViewModel extends ViewModel {
 
     private static final String TAG = MainViewModel.class.getSimpleName();
@@ -86,19 +85,20 @@ public class MainViewModel extends ViewModel {
 
                 if (response.body() != null) {
                     movies.setValue(response.body().getResults());
+                } else {
+                    movies.setValue(null);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<MoviesResponse> call, @NonNull Throwable t) {
-
+                movies.setValue(null);
             }
         });
     }
 
     //ToDo 5: create method return movies list
-    public LiveData<List<Movie>> getMovies()
-    {
+    public LiveData<List<Movie>> getMovies() {
         return movies;
     }
 
