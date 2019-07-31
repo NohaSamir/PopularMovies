@@ -1,14 +1,7 @@
 package com.example.android.popularmovies.view_model;
 
-/*
-View Model Features
-1- The ViewModel class is designed to separate out view data ownership from UI controller logic.
-2- The ViewModel class allows data to survive configuration changes such as screen rotations using LiveDate.
-
-On This branch we will develop the first one
-and develop the second feature on LiveData branch
-*/
-
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -25,20 +18,27 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
+
 public class MainViewModel extends ViewModel {
 
     private static final String TAG = MainViewModel.class.getSimpleName();
 
-    private List<Movie> movies;
+    //ToDo 1 : Create an instance of LiveData to hold movie List
+    //private List<Movie> movies;
+    private MutableLiveData<List<Movie>> movies = new MutableLiveData<>();
+
     private String apiKey;
 
 
     MainViewModel(String apiKey) {
         this.apiKey = apiKey;
+        //ToDo 4: call method load movies in the constructor
+        loadMovies();
     }
 
 
-    public interface OnDataLoadListener {
+    //ToDo 2 : Delete On data load listener
+    /*public interface OnDataLoadListener {
 
         void onSuccess(List<Movie> movies);
 
@@ -69,6 +69,37 @@ public class MainViewModel extends ViewModel {
                 onDataLoadListener.onFailure();
             }
         });
+    }*/
+
+    //ToDo 3: Create method to Load movies list and set LiveData object
+    private void loadMovies() {
+        // we can copy it from the MainActivity
+
+        Log.d(TAG, "Load Movies Called");
+
+        ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
+
+        Call<MoviesResponse> call = service.getPopularMovies(apiKey);
+        call.enqueue(new Callback<MoviesResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<MoviesResponse> call, @NonNull Response<MoviesResponse> response) {
+
+                if (response.body() != null) {
+                    movies.setValue(response.body().getResults());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<MoviesResponse> call, @NonNull Throwable t) {
+
+            }
+        });
+    }
+
+    //ToDo 5: create method return movies list
+    public LiveData<List<Movie>> getMovies()
+    {
+        return movies;
     }
 
 }

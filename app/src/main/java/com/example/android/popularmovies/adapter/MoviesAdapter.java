@@ -31,16 +31,16 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         }
     }
 
-    public MoviesAdapter(Context context, List<Movie> movies) {
+    public MoviesAdapter(List<Movie> movies) {
         this.movies = movies;
-        this.context = context;
+
     }
 
     @NonNull
     @Override
     public MoviesAdapter.MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        context = parent.getContext();
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
         ListItemsBinding listItemsBinding = DataBindingUtil.inflate(layoutInflater, R.layout.list_items, parent, false);
 
         return new MovieViewHolder(listItemsBinding);
@@ -65,8 +65,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
         }
     }
 
-    public void addItem(List<Movie> movies)
-    {
+    public void addItem(List<Movie> movies) {
         this.movies.addAll(movies);
         notifyDataSetChanged();
     }
