@@ -52,6 +52,13 @@ On This branch we will develop the first one and develop the second feature on L
 
 ##### Note: you can accumulate on DataBindingRseult branch and follow ToDo steps
 
+--------------------------------
+
+## 4- LiveData Branch [tutorial](https://developer.android.com/topic/libraries/architecture/livedata)
+
+- LiveData is an observable data holder class. Unlike a regular observable, LiveData is lifecycle-aware, meaning it respects the lifecycle of other app components, such as activities, fragments, or services. This awareness ensures LiveData only updates app component observers that are in an active lifecycle state.
+
+##### Note: you can accumulate on ViewModelRseult branch and follow ToDo steps
 
 
    
