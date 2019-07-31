@@ -1,11 +1,12 @@
 package com.example.android.popularmovies.activity;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.example.android.popularmovies.R;
 import com.example.android.popularmovies.adapter.MoviesAdapter;
@@ -32,24 +33,18 @@ public class MainActivity extends AppCompatActivity {
 
         API_KEY = getString(R.string.api_key);
         mContext = this;
-        moviesAdapter = new MoviesAdapter(mContext, mMovies);
+        moviesAdapter = new MoviesAdapter(mMovies);
 
         final ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setAdapter(moviesAdapter);
 
         final MainViewModel mainViewModel = ViewModelProviders.of(this, new MainViewModelFactory(API_KEY)).get(MainViewModel.class);
 
-        mainViewModel.loadMovies(new MainViewModel.OnDataLoadListener() {
+        mainViewModel.getMovies().observe(this, new Observer<List<Movie>>() {
             @Override
-            public void onSuccess(List<Movie> movies) {
+            public void onChanged(@Nullable List<Movie> movies) {
                 moviesAdapter.addItem(movies);
             }
-
-            @Override
-            public void onFailure() {
-                Toast.makeText(mContext, R.string.error, Toast.LENGTH_LONG).show();
-            }
         });
-
     }
 }

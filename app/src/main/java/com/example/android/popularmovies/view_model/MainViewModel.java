@@ -1,14 +1,7 @@
 package com.example.android.popularmovies.view_model;
 
-/*
-View Model Features
-1- The ViewModel class is designed to separate out view data ownership from UI controller logic.
-2- The ViewModel class allows data to survive configuration changes such as screen rotations using LiveDate.
-
-On This branch we will develop the first one
-and develop the second feature on LiveData branch
-*/
-
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -29,24 +22,17 @@ public class MainViewModel extends ViewModel {
 
     private static final String TAG = MainViewModel.class.getSimpleName();
 
-    private List<Movie> movies;
+    private MutableLiveData<List<Movie>> movies = new MutableLiveData<>();
+
     private String apiKey;
 
 
     MainViewModel(String apiKey) {
         this.apiKey = apiKey;
+        loadMovies();
     }
 
-
-    public interface OnDataLoadListener {
-
-        void onSuccess(List<Movie> movies);
-
-        void onFailure();
-    }
-
-
-    public void loadMovies(final OnDataLoadListener onDataLoadListener) {
+    private void loadMovies() {
         // we can copy it from the MainActivity
 
         Log.d(TAG, "Load Movies Called");
@@ -59,16 +45,19 @@ public class MainViewModel extends ViewModel {
             public void onResponse(@NonNull Call<MoviesResponse> call, @NonNull Response<MoviesResponse> response) {
 
                 if (response.body() != null) {
-                    movies = response.body().getResults();
-                    onDataLoadListener.onSuccess(movies);
+                    movies.setValue(response.body().getResults());
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<MoviesResponse> call, @NonNull Throwable t) {
-                onDataLoadListener.onFailure();
+
             }
         });
+    }
+
+    public LiveData<List<Movie>> getMovies() {
+        return movies;
     }
 
 }
