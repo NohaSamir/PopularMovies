@@ -5,7 +5,9 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.android.popularmovies.R;
 import com.example.android.popularmovies.model.Movie;
 import com.example.android.popularmovies.model.MoviesResponse;
 import com.example.android.popularmovies.rest.ApiClient;
@@ -46,12 +48,14 @@ public class MainViewModel extends ViewModel {
 
                 if (response.body() != null) {
                     movies.setValue(response.body().getResults());
+                } else {
+                    movies.setValue(null);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<MoviesResponse> call, @NonNull Throwable t) {
-
+                movies.setValue(null);
             }
         });
     }
