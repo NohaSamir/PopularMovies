@@ -18,13 +18,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-
 public class MainViewModel extends ViewModel {
 
     private static final String TAG = MainViewModel.class.getSimpleName();
 
-    //ToDo 1 : Create an instance of LiveData to hold movie List
-    //private List<Movie> movies;
     private MutableLiveData<List<Movie>> movies = new MutableLiveData<>();
 
     private String apiKey;
@@ -32,46 +29,9 @@ public class MainViewModel extends ViewModel {
 
     MainViewModel(String apiKey) {
         this.apiKey = apiKey;
-        //ToDo 4: call method load movies in the constructor
         loadMovies();
     }
 
-
-    //ToDo 2 : Delete On data load listener
-    /*public interface OnDataLoadListener {
-
-        void onSuccess(List<Movie> movies);
-
-        void onFailure();
-    }
-
-
-    public void loadMovies(final OnDataLoadListener onDataLoadListener) {
-        // we can copy it from the MainActivity
-
-        Log.d(TAG, "Load Movies Called");
-
-        ApiInterface service = ApiClient.getClient().create(ApiInterface.class);
-
-        Call<MoviesResponse> call = service.getPopularMovies(apiKey);
-        call.enqueue(new Callback<MoviesResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<MoviesResponse> call, @NonNull Response<MoviesResponse> response) {
-
-                if (response.body() != null) {
-                    movies = response.body().getResults();
-                    onDataLoadListener.onSuccess(movies);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<MoviesResponse> call, @NonNull Throwable t) {
-                onDataLoadListener.onFailure();
-            }
-        });
-    }*/
-
-    //ToDo 3: Create method to Load movies list and set LiveData object
     private void loadMovies() {
         // we can copy it from the MainActivity
 
@@ -96,9 +56,7 @@ public class MainViewModel extends ViewModel {
         });
     }
 
-    //ToDo 5: create method return movies list
-    public LiveData<List<Movie>> getMovies()
-    {
+    public LiveData<List<Movie>> getMovies() {
         return movies;
     }
 
