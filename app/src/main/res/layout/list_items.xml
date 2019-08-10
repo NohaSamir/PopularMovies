@@ -1,6 +1,5 @@
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -14,7 +13,7 @@
     </data>
 
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/movies_layout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -37,18 +36,18 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:background="@android:color/black"
-            android:lines="2"
             android:gravity="center"
+            android:lines="2"
+            android:padding="8dp"
             android:text="@{movie.title}"
             android:textAlignment="center"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/item_movie_poster"
             app:layout_constraintEnd_toEndOf="@+id/item_movie_poster"
             app:layout_constraintStart_toStartOf="@+id/item_movie_poster" />
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
