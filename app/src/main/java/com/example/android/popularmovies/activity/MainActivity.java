@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.example.android.popularmovies.Injection;
 import com.example.android.popularmovies.R;
 import com.example.android.popularmovies.adapter.MoviesAdapter;
 import com.example.android.popularmovies.databinding.ActivityMainBinding;
@@ -32,14 +33,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        API_KEY = getString(R.string.api_key);
+        // API_KEY = getString(R.string.api_key);
         mContext = this;
         moviesAdapter = new MoviesAdapter(mMovies);
 
         final ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setAdapter(moviesAdapter);
 
-        final MainViewModel mainViewModel = ViewModelProviders.of(this, new MainViewModelFactory(API_KEY)).get(MainViewModel.class);
+        //ToDo 6 : send the repository as a parameter using Injection class
+        final MainViewModel mainViewModel = ViewModelProviders.of(this, new MainViewModelFactory(Injection.provideMovieRepository(this)))
+                .get(MainViewModel.class);
 
         mainViewModel.getMovies().observe(this, new Observer<List<Movie>>() {
             @Override
