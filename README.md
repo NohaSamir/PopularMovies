@@ -60,5 +60,11 @@ On This branch we will develop the first one and develop the second feature on L
 
 ##### Note: you can accumulate on ViewModelRseult branch and follow ToDo steps
 
+--------------------------------
 
+## 5- Repository Branch [tutorial](https://codelabs.developers.google.com/codelabs/android-training-livedata-viewmodel/#7)
+
+- Although the Repository is not part of the Architecture Components libraries, but is a suggested best practice for code separation and architecture. A Repository class handles data operations and it's important to introduce it before start in Pagination and Rooming. 
+
+##### Note: you can accumulate on LiveDataRseult branch and follow ToDo steps
    
