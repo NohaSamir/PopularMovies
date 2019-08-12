@@ -1,15 +1,6 @@
 package com.example.android.popularmovies.repository;
 
 
-//ToDo 1 : Create The Repository
-/* A Repository is a class that abstracts access to multiple data sources.
- * The Repository is not part of the Architecture Components libraries, but is a suggested best practice for code separation and architecture.
- * A Repository class handles data operations.
- * It provides a clean API to the rest of the app for app data.
- * -
- * In movie app, Movie repository will fetch movies list from a network
- */
-
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
@@ -43,7 +34,6 @@ public class MovieRepository {
         movies = new MutableLiveData<>();
     }
 
-    //ToDo 2: implement get movies (Copy it from MainViewModel) and make it take page number
     public LiveData<List<Movie>> getMovies() {
 
         if (isRequestInProgress) return movies;
