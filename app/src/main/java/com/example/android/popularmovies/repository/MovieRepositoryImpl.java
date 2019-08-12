@@ -15,7 +15,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-//ToDo 2: Implement Movie Repository to fetch data from network
 public class MovieRepositoryImpl implements MovieRepository {
 
     private ApiInterface service;
@@ -26,7 +25,7 @@ public class MovieRepositoryImpl implements MovieRepository {
         this.apiKey = apiKey;
     }
 
-    //ToDo 3: implement get movies (Copy it from MainViewModel)
+
     public LiveData<List<Movie>> getMovies() {
 
         final MutableLiveData<List<Movie>> movies = new MutableLiveData<>();

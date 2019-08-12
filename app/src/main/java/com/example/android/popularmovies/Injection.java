@@ -7,11 +7,6 @@ import com.example.android.popularmovies.repository.MovieRepositoryImpl;
 import com.example.android.popularmovies.rest.ApiClient;
 import com.example.android.popularmovies.rest.ApiInterface;
 
-//ToDo 4: Create injection class
-/* Class that handles object creation.
- * Like this, objects can be passed as parameters in the constructors and then replaced for
- * testing, where needed.
- */
 public class Injection {
 
     public static MovieRepository provideMovieRepository(Context context) {

@@ -23,7 +23,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static String API_KEY;
     private Context mContext;
 
     private List<Movie> mMovies = new ArrayList<>();
@@ -33,14 +32,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // API_KEY = getString(R.string.api_key);
         mContext = this;
         moviesAdapter = new MoviesAdapter(mMovies);
 
         final ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setAdapter(moviesAdapter);
 
-        //ToDo 6 : send the repository as a parameter using Injection class
         final MainViewModel mainViewModel = ViewModelProviders.of(this, new MainViewModelFactory(Injection.provideMovieRepository(this)))
                 .get(MainViewModel.class);
 
