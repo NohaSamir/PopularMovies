@@ -67,4 +67,14 @@ On This branch we will develop the first one and develop the second feature on L
 - Although the Repository is not part of the Architecture Components libraries, but is a suggested best practice for code separation and architecture. A Repository class handles data operations and it's important to introduce it before start in Pagination and Rooming. 
 
 ##### Note: you can accumulate on LiveDataRseult branch and follow ToDo steps
+
+--------------------------------
+
+## 6- PagingWithNetwork Branch [tutorial](https://developer.android.com/topic/libraries/architecture/paging) 
+
+- The Paging Library helps you load and display small chunks of data at a time. Loading partial data on demand reduces usage of network bandwidth and system resources.
+
+- This guide introduce paging from network only, Later we will introduce paging from local + network
+
+##### Note: you can accumulate on RepositoryRseult branch and follow ToDo steps
    
