@@ -6,8 +6,6 @@ import android.arch.paging.DataSource;
 import com.example.android.popularmovies.rest.ApiInterface;
 
 
-//ToDo 4: create data source factory that is responsible for creating a DataSource.
-
 public class MoviesDataSourceFactory extends DataSource.Factory {
 
     private MutableLiveData<MoviesDataSource> sourceLiveData =

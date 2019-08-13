@@ -14,13 +14,9 @@ import com.example.android.popularmovies.activity.MovieDetails;
 import com.example.android.popularmovies.databinding.ListItemsBinding;
 import com.example.android.popularmovies.model.Movie;
 
-import java.util.List;
 
-//ToDo 6 : Edit our adapter to work with paged list by extends PagedListAdapter
 public class MoviesAdapter extends PagedListAdapter<Movie, MoviesAdapter.MovieViewHolder> {
 
-
-    //private List<Movie> movies;
     private Context context;
 
     class MovieViewHolder extends RecyclerView.ViewHolder {
@@ -33,7 +29,6 @@ public class MoviesAdapter extends PagedListAdapter<Movie, MoviesAdapter.MovieVi
         }
     }
 
-    //ToDo 7 : define DiffUtil.ItemCallback<Movie>
     private static DiffUtil.ItemCallback<Movie> DIFF_CALLBACK = new DiffUtil.ItemCallback<Movie>() {
         @Override
         public boolean areItemsTheSame(@NonNull Movie movie, @NonNull Movie t1) {
@@ -46,7 +41,7 @@ public class MoviesAdapter extends PagedListAdapter<Movie, MoviesAdapter.MovieVi
         }
     };
 
-    //ToDo 8: pass DIFF_CALLBACK to the constructor
+
     public MoviesAdapter() {
         super(DIFF_CALLBACK);
     }
@@ -64,7 +59,6 @@ public class MoviesAdapter extends PagedListAdapter<Movie, MoviesAdapter.MovieVi
     @Override
     public void onBindViewHolder(@NonNull final MovieViewHolder holder, final int position) {
 
-        //ToDo 9: Use get item instead of using list
         Movie movie = getItem(position);
 
         if (movie != null) {
@@ -73,13 +67,6 @@ public class MoviesAdapter extends PagedListAdapter<Movie, MoviesAdapter.MovieVi
         }
     }
 
-    //ToDo 10: Remove get item count
-    /*
-    @Override
-    public int getItemCount() {
-        return movies.size();
-    }*/
-
 
     public class ClickHandlers {
         public void onClickMovie(Movie movie) {
@@ -87,10 +74,5 @@ public class MoviesAdapter extends PagedListAdapter<Movie, MoviesAdapter.MovieVi
         }
     }
 
-    //ToDo 11 : remove add item because we will use submitList
-   /* public void addItem(List<Movie> movies) {
-        this.movies.addAll(movies);
-        notifyDataSetChanged();
-    }*/
 }
 

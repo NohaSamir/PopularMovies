@@ -11,12 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-//ToDo 3: DataSource is the base class for loading snapshots of data into a PagedList.
-/* If your app gets data directly from the network and displays it without caching, then the class that makes network requests would be your data source.
- * else if your app gets data from room database then The Room persistence library provides native support for data sources associated with the Paging library.
- * *
- * In our case we will create our data source using the network call from movie repository
- */
+
 public class MoviesDataSource extends PageKeyedDataSource<Integer, Movie> {
 
     private ApiInterface service;

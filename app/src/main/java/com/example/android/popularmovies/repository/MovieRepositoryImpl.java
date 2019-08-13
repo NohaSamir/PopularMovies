@@ -22,39 +22,10 @@ public class MovieRepositoryImpl implements MovieRepository {
         this.apiKey = apiKey;
     }
 
-    //ToDo 5 : Update my repository to return LiveData<PagedList> instead of LiveData<List> using LivePagedListBuilder
+
     @Override
     public LiveData<PagedList<Movie>> getMovies() {
         MoviesDataSourceFactory dataSourceFactory = new MoviesDataSourceFactory(service, apiKey);
         return (LiveData<PagedList<Movie>>) new LivePagedListBuilder<>(dataSourceFactory, PAGE_SIZE).build();
     }
-
-    /*
-    public LiveData<List<Movie>> getMovies() {
-
-        final MutableLiveData<List<Movie>> movies = new MutableLiveData<>();
-        Call<MoviesResponse> call = service.getPopularMovies(apiKey);
-        call.enqueue(new Callback<MoviesResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<MoviesResponse> call, @NonNull Response<MoviesResponse> response) {
-
-                if (response.body() != null) {
-                    movies.setValue(response.body().getResults());
-
-                } else {
-                    movies.setValue(null);
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<MoviesResponse> call, @NonNull Throwable t) {
-                movies.setValue(null);
-            }
-        });
-
-        return movies;
-    }
-*/
-
-
 }
