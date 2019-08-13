@@ -208,8 +208,5 @@ public class Movie implements Parcelable {
         return voteAverage;
     }
 
-    @BindingAdapter("loadImage")
-    public static void loadImage(ImageView imageView, String url) {
-        Glide.with(imageView.getContext()).load(url).into(imageView);
-    }
+
 }
