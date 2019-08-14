@@ -1,4 +1,4 @@
-package com.example.android.popularmovies.rest;
+package com.example.android.popularmovies.network;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

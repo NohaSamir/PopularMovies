@@ -1,48 +1,80 @@
 package com.example.android.popularmovies.model;
 
-import android.databinding.BindingAdapter;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ImageView;
+import android.support.annotation.NonNull;
 
-import com.bumptech.glide.Glide;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+//ToDo 2: lets start by Define our entity . The data for this app is Movie, and you will need a simple table to hold those values
+// To persist a field, Room must have access to it. You can make a field public, or you can provide a getter and setter for it.
+// and also Entities can have either an empty constructor or full or partial constructors
+
+@Entity(tableName = "movie_table") //Add Entity annotation before our entity
 public class Movie implements Parcelable {
 
     private static final String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
-    @SerializedName("poster_path")
-    private String posterPath;
-    @SerializedName("adult")
-    private boolean adult;
-    @SerializedName("overview")
-    private String overview;
-    @SerializedName("release_date")
-    private String releaseDate;
-    @SerializedName("genre_ids")
-    private List<Integer> genreIds = new ArrayList<Integer>();
+    //ToDo 2:Define our primary key
+    @PrimaryKey
+    @NonNull
     @SerializedName("id")
     private Integer id;
-    @SerializedName("original_title")
-    private String originalTitle;
-    @SerializedName("original_language")
-    private String originalLanguage;
+
     @SerializedName("title")
     private String title;
+
+    @SerializedName("poster_path")
+    private String posterPath;
+
     @SerializedName("backdrop_path")
     private String backdropPath;
-    @SerializedName("popularity")
-    private Double popularity;
-    @SerializedName("vote_count")
-    private Integer voteCount;
-    @SerializedName("video")
-    private Boolean video;
+
+    @SerializedName("release_date")
+    private String releaseDate;
+
+    @SerializedName("overview")
+    private String overview;
+
     @SerializedName("vote_average")
     private Double voteAverage;
+
+
+    @Ignore //ToDo 2: Add  @Ignore before fields we need to ignore
+    @SerializedName("adult")
+    private boolean adult;
+    @Ignore
+    @SerializedName("genre_ids")
+    private List<Integer> genreIds = new ArrayList<Integer>();
+    @Ignore
+    @SerializedName("original_title")
+    private String originalTitle;
+    @Ignore
+    @SerializedName("original_language")
+    private String originalLanguage;
+    @Ignore
+    @SerializedName("popularity")
+    private Double popularity;
+    @Ignore
+    @SerializedName("vote_count")
+    private Integer voteCount;
+    @Ignore
+    @SerializedName("video")
+    private Boolean video;
+
+
+    //ToDo 2: Empty constructor
+    public Movie() {
+
+    }
+
 
     public Movie(String posterPath, boolean adult, String overview, String releaseDate,
                  List<Integer> genreIds, Integer id, String originalTitle, String originalLanguage,
@@ -152,12 +184,13 @@ public class Movie implements Parcelable {
     };
 
 
-    public String getPosterPath() {
-        return IMAGE_BASE_URL + posterPath;
-    }
+    //ToDo 2 : Define getter and setter
 
-    public boolean isAdult() {
-        return adult;
+    public String getPosterPath() {
+        if (!posterPath.contains(IMAGE_BASE_URL))
+            return IMAGE_BASE_URL + posterPath;
+        else
+            return posterPath;
     }
 
     public String getOverview() {
@@ -176,32 +209,17 @@ public class Movie implements Parcelable {
         return id;
     }
 
-    public String getOriginalTitle() {
-        return originalTitle;
-    }
-
-    public String getOriginalLanguage() {
-        return originalLanguage;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public String getBackdropPath() {
-        return backdropPath;
-    }
 
-    public Double getPopularity() {
-        return popularity;
-    }
+        if (!backdropPath.contains(IMAGE_BASE_URL))
+            return IMAGE_BASE_URL + backdropPath;
+        else
+            return backdropPath;
 
-    public Integer getVoteCount() {
-        return voteCount;
-    }
-
-    public Boolean getVideo() {
-        return video;
     }
 
     public Double getVoteAverage() {
@@ -209,4 +227,31 @@ public class Movie implements Parcelable {
     }
 
 
+    public void setId(@NonNull Integer id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public void setVoteAverage(Double voteAverage) {
+        this.voteAverage = voteAverage;
+    }
 }

@@ -5,7 +5,9 @@ import android.arch.paging.PagedList;
 
 import com.example.android.popularmovies.model.Movie;
 
+import java.util.List;
+
 public interface MovieRepository {
 
-    LiveData<PagedList<Movie>> getMovies();
+    LiveData<List<Movie>> getMovies();
 }
