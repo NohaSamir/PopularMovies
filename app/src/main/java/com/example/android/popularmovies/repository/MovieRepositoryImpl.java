@@ -50,9 +50,12 @@ public class MovieRepositoryImpl implements MovieRepository {
 
                     List<Movie> movies = response.body().getResults();
 
-                    //save data in cache
-                    executor.execute(() -> cache.insert(movies));
-                    //movies.setValue(response.body().getResults());
+                    executor.execute(() ->
+                    {
+                        //clear cache and save new data in cache
+                        cache.deleteAll();
+                        cache.insert(movies);
+                    });
 
                 }
                 /*else {
