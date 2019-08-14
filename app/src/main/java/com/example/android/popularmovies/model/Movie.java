@@ -13,16 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//ToDo 2: lets start by Define our entity . The data for this app is Movie, and you will need a simple table to hold those values
-// To persist a field, Room must have access to it. You can make a field public, or you can provide a getter and setter for it.
-// and also Entities can have either an empty constructor or full or partial constructors
-
-@Entity(tableName = "movie_table") //Add Entity annotation before our entity
+@Entity(tableName = "movie_table")
 public class Movie implements Parcelable {
 
     private static final String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
-    //ToDo 2:Define our primary key
+
     @PrimaryKey
     @NonNull
     @SerializedName("id")
@@ -47,12 +43,12 @@ public class Movie implements Parcelable {
     private Double voteAverage;
 
 
-    @Ignore //ToDo 2: Add  @Ignore before fields we need to ignore
+    @Ignore
     @SerializedName("adult")
     private boolean adult;
     @Ignore
     @SerializedName("genre_ids")
-    private List<Integer> genreIds = new ArrayList<Integer>();
+    private List<Integer> genreIds = new ArrayList<>();
     @Ignore
     @SerializedName("original_title")
     private String originalTitle;
@@ -70,14 +66,13 @@ public class Movie implements Parcelable {
     private Boolean video;
 
 
-    //ToDo 2: Empty constructor
     public Movie() {
 
     }
 
 
     public Movie(String posterPath, boolean adult, String overview, String releaseDate,
-                 List<Integer> genreIds, Integer id, String originalTitle, String originalLanguage,
+                 List<Integer> genreIds, @NonNull Integer id, String originalTitle, String originalLanguage,
                  String title, String backdropPath, Double popularity,
                  Integer voteCount, Boolean video, Double voteAverage) {
         this.posterPath = posterPath;
@@ -135,12 +130,8 @@ public class Movie implements Parcelable {
         dest.writeByte((byte) (adult ? 1 : 0));
         dest.writeString(overview);
         dest.writeString(releaseDate);
-        if (id == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(id);
-        }
+        dest.writeByte((byte) 1);
+        dest.writeInt(id);
         dest.writeString(originalTitle);
         dest.writeString(originalLanguage);
         dest.writeString(title);
@@ -183,8 +174,6 @@ public class Movie implements Parcelable {
         }
     };
 
-
-    //ToDo 2 : Define getter and setter
 
     public String getPosterPath() {
         if (!posterPath.contains(IMAGE_BASE_URL))

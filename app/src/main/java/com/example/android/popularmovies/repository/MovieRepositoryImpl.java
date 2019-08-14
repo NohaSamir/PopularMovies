@@ -25,7 +25,7 @@ public class MovieRepositoryImpl implements MovieRepository {
     private String apiKey;
     private Executor executor = Executors.newSingleThreadExecutor();
 
-    //ToDo 8: Modify the repository to take MovieDao as an argument
+
     public MovieRepositoryImpl(ApiInterface service, MoviesDao cache, String apiKey) {
         this.service = service;
         this.apiKey = apiKey;
@@ -33,10 +33,7 @@ public class MovieRepositoryImpl implements MovieRepository {
     }
 
 
-    //ToDo 9: Edit get movies to read from cache and save data to cache
     public LiveData<List<Movie>> getMovies() {
-
-        //final MutableLiveData<List<Movie>> movies = new MutableLiveData<>();
 
         //Read from cache
         LiveData<List<Movie>> moviesList = cache.getMovies();
@@ -50,19 +47,19 @@ public class MovieRepositoryImpl implements MovieRepository {
 
                     List<Movie> movies = response.body().getResults();
 
-                    //save data in cache
-                    executor.execute(() -> cache.insert(movies));
-                    //movies.setValue(response.body().getResults());
+                    executor.execute(() ->
+                    {
+                        //clear cache and save new data in cache
+                        cache.deleteAll();
+                        cache.insert(movies);
+                    });
+
 
                 }
-                /*else {
-                    movies.setValue(null);
-                }*/
             }
 
             @Override
             public void onFailure(@NonNull Call<MoviesResponse> call, @NonNull Throwable t) {
-                //movies.setValue(null);
             }
         });
 

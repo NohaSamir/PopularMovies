@@ -18,16 +18,13 @@ import com.example.android.popularmovies.view_model.MainViewModelFactory;
 public class MainActivity extends AppCompatActivity {
 
     private Context mContext;
-
-    //private List<Movie> mMovies = new ArrayList<>();
-    MoviesAdapter moviesAdapter;
+    private MoviesAdapter moviesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mContext = this;
-        //ToDo 17: not pass list in the constructor
         moviesAdapter = new MoviesAdapter();
 
         final ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -38,15 +35,10 @@ public class MainActivity extends AppCompatActivity {
 
         mainViewModel.getMovies().observe(this, movies -> {
             if (movies != null) {
-                //ToDo 18 : submit your list
                 moviesAdapter.submitList(movies);
             } else {
                 Toast.makeText(mContext, R.string.error, Toast.LENGTH_LONG).show();
             }
         });
     }
-
-    //ToDo 19 : Congratulation
-    // Now your app will work in case offline or server error or timeout
-    // Enjoy and wish me nice things :)
 }

@@ -11,11 +11,6 @@ import com.example.android.popularmovies.model.Movie;
 
 import java.util.List;
 
-
-//ToDo 3: Create DAO interface
-// A DAO (data access object) validates your SQL at compile-time and associate it with a method,
-// so you don't have to worry about the SQL again... all with simple annotations like @Insert!
-
 @Dao
 public interface MoviesDao {
 
@@ -24,4 +19,8 @@ public interface MoviesDao {
 
     @Query("select * from MOVIE_TABLE")
     LiveData<List<Movie>> getMovies();
+
+
+    @Query("DELETE FROM MOVIE_TABLE")
+    void deleteAll();
 }

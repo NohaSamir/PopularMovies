@@ -12,9 +12,8 @@ import com.example.android.popularmovies.repository.MovieRepositoryImpl;
 
 public class Injection {
 
-    //ToDo 8: Modify the repository to take MovieDao as an argument
     public static MovieRepository provideMovieRepository(Context context) {
-        return new MovieRepositoryImpl(provideAPIService(),provideMovieDao(context), provideAPIKey(context));
+        return new MovieRepositoryImpl(provideAPIService(), provideMovieDao(context), provideAPIKey(context));
     }
 
     private static ApiInterface provideAPIService() {
@@ -25,7 +24,6 @@ public class Injection {
         return context.getString(R.string.api_key);
     }
 
-    //ToDo 7: Inject Movie Dao Creation
     private static MoviesDao provideMovieDao(Context context) {
         return MoviesDatabase.getInstance(context).moviesDao();
     }

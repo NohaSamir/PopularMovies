@@ -7,14 +7,10 @@ import android.content.Context;
 
 import com.example.android.popularmovies.model.Movie;
 
-//ToDo 4: Create the Room database
-// Create a public abstract class that extends RoomDatabase
-// Annotate the class to be a Room database
+
 @Database(entities = {Movie.class}, version = 1)
 public abstract class MoviesDatabase extends RoomDatabase {
 
-    //ToDo 5: Create method get instance
-    // Make the MoviesDatabase a singleton to prevent having multiple instances of the database opened at the same time.
 
     private static volatile MoviesDatabase INSTANCE;
 
@@ -32,7 +28,7 @@ public abstract class MoviesDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    //ToDo 6: Define the DAOs that work with the database. Provide an abstract "getter" method for each @Dao
+
     public abstract MoviesDao moviesDao();
 
 }
