@@ -1,9 +1,9 @@
 package com.example.android.popularmovies.adapter;
 
+import android.arch.paging.PagedListAdapter;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
-import android.support.v7.recyclerview.extensions.ListAdapter;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,7 +15,7 @@ import com.example.android.popularmovies.databinding.ListItemsBinding;
 import com.example.android.popularmovies.model.Movie;
 
 
-public class MoviesAdapter extends ListAdapter<Movie, MoviesAdapter.MovieViewHolder> {
+public class MoviesAdapter extends PagedListAdapter<Movie, MoviesAdapter.MovieViewHolder> {
 
     private Context context;
 

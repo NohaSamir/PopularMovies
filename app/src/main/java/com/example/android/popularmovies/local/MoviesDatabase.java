@@ -8,7 +8,7 @@ import android.content.Context;
 import com.example.android.popularmovies.model.Movie;
 
 
-@Database(entities = {Movie.class}, version = 1)
+@Database(entities = {Movie.class}, version = 2)
 public abstract class MoviesDatabase extends RoomDatabase {
 
 
@@ -21,6 +21,7 @@ public abstract class MoviesDatabase extends RoomDatabase {
                     // Create database here
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             MoviesDatabase.class, "movies_database")
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }

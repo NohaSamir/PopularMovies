@@ -18,7 +18,6 @@ public class Movie implements Parcelable {
 
     private static final String IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
-
     @PrimaryKey
     @NonNull
     @SerializedName("id")
@@ -55,7 +54,7 @@ public class Movie implements Parcelable {
     @Ignore
     @SerializedName("original_language")
     private String originalLanguage;
-    @Ignore
+    //@Ignore
     @SerializedName("popularity")
     private Double popularity;
     @Ignore
@@ -176,7 +175,7 @@ public class Movie implements Parcelable {
 
 
     public String getPosterPath() {
-        if (!posterPath.contains(IMAGE_BASE_URL))
+        if (posterPath != null && !posterPath.contains(IMAGE_BASE_URL))
             return IMAGE_BASE_URL + posterPath;
         else
             return posterPath;
@@ -204,7 +203,7 @@ public class Movie implements Parcelable {
 
     public String getBackdropPath() {
 
-        if (!backdropPath.contains(IMAGE_BASE_URL))
+        if (backdropPath != null && !backdropPath.contains(IMAGE_BASE_URL))
             return IMAGE_BASE_URL + backdropPath;
         else
             return backdropPath;
@@ -242,5 +241,13 @@ public class Movie implements Parcelable {
 
     public void setVoteAverage(Double voteAverage) {
         this.voteAverage = voteAverage;
+    }
+
+    public Double getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(Double popularity) {
+        this.popularity = popularity;
     }
 }
