@@ -48,7 +48,6 @@ dependencies {
     /*ARCHITECTURE*/
     implementation 'android.arch.lifecycle:extensions:1.1.1'
 
-    /*ToDo 1 : Add paging dependency*/
     /*Paging*/
     implementation "android.arch.paging:runtime:$paging_version"
 

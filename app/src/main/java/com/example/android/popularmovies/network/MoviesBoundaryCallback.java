@@ -14,7 +14,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-//ToDo 6.1: extends PagedList.BoundaryCallback
 
 public class MoviesBoundaryCallback extends PagedList.BoundaryCallback<Movie> {
 
@@ -32,7 +31,7 @@ public class MoviesBoundaryCallback extends PagedList.BoundaryCallback<Movie> {
         this.apiKey = apiKey;
     }
 
-    //ToDo 6.2: request and save data and edit it to take page number
+
     private void requestAndSaveData() {
 
         if (isRequestInProgress) return;
@@ -63,8 +62,6 @@ public class MoviesBoundaryCallback extends PagedList.BoundaryCallback<Movie> {
             }
         });
     }
-
-    //ToDo 6.3 : override onZeroItemsLoaded() and onItemAtEndLoaded()
 
     /**
      * Database returned 0 items. We should query the backend for more items.

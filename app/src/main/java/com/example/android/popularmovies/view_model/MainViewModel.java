@@ -7,10 +7,6 @@ import android.arch.paging.PagedList;
 import com.example.android.popularmovies.model.Movie;
 import com.example.android.popularmovies.repository.MovieRepository;
 
-import java.util.List;
-
-
-//ToDo 3.1 :Replace occurrences of List<Movie> with PagedList<Movie>
 
 public class MainViewModel extends ViewModel {
 
@@ -20,12 +16,8 @@ public class MainViewModel extends ViewModel {
         movies = repository.getMovies();
     }
 
-
     public LiveData<PagedList<Movie>> getMovies() {
         return movies;
     }
-    /*public LiveData<List<Movie>> getMovies() {
-        return movies;
-    }*/
 
 }

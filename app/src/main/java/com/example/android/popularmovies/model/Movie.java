@@ -12,8 +12,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-//ToDo 9: Now If you run , you will see that the list not order by popularity
-// we will add popularity to our database and migrate it
 
 @Entity(tableName = "movie_table")
 public class Movie implements Parcelable {
@@ -56,7 +54,7 @@ public class Movie implements Parcelable {
     @Ignore
     @SerializedName("original_language")
     private String originalLanguage;
-    //@Ignore //ToDo 9.1: not ignore and add getter and setter
+    //@Ignore
     @SerializedName("popularity")
     private Double popularity;
     @Ignore

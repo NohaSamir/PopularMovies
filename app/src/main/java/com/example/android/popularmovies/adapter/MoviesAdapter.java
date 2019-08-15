@@ -14,7 +14,6 @@ import com.example.android.popularmovies.activity.MovieDetails;
 import com.example.android.popularmovies.databinding.ListItemsBinding;
 import com.example.android.popularmovies.model.Movie;
 
-//ToDo 2 : Edit our adapter to work with paged list by extends PagedListAdapter instead of ListAdapter
 
 public class MoviesAdapter extends PagedListAdapter<Movie, MoviesAdapter.MovieViewHolder> {
 

@@ -7,7 +7,7 @@ import android.content.Context;
 
 import com.example.android.popularmovies.model.Movie;
 
-//ToDo 9.2: migrate db version
+
 @Database(entities = {Movie.class}, version = 2)
 public abstract class MoviesDatabase extends RoomDatabase {
 
@@ -21,7 +21,7 @@ public abstract class MoviesDatabase extends RoomDatabase {
                     // Create database here
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             MoviesDatabase.class, "movies_database")
-                            .fallbackToDestructiveMigration() //ToDo 9.2 : Clear old database on migration
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }
