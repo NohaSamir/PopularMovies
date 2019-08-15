@@ -87,4 +87,14 @@ On This branch we will develop the first one and develop the second feature on L
 - This guide introduce room without paging, Later we will introduce paging from local + network
 
 ##### Note: you can accumulate on RepositoryRseult branch and follow ToDo steps
+
+--------------------------------
+
+## 8- Paging(Local+Network) Branch [tutorial](https://developer.android.com/topic/libraries/architecture/paging) 
+
+- The Paging Library helps you load and display small chunks of data at a time. Loading partial data on demand reduces usage of network bandwidth and system resources. [example](https://codelabs.developers.google.com/codelabs/android-paging/#0)
+
+- This guide introduce paging from local + network
+
+##### Note: you can accumulate on RoomDBRseult branch and follow ToDo steps
    
