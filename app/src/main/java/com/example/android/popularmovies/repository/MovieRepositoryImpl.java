@@ -2,24 +2,22 @@ package com.example.android.popularmovies.repository;
 
 
 import android.arch.lifecycle.LiveData;
-import android.support.annotation.NonNull;
+import android.arch.paging.DataSource;
+import android.arch.paging.LivePagedListBuilder;
+import android.arch.paging.PagedList;
 
 import com.example.android.popularmovies.local.MoviesDao;
 import com.example.android.popularmovies.model.Movie;
-import com.example.android.popularmovies.model.MoviesResponse;
 import com.example.android.popularmovies.network.ApiInterface;
+import com.example.android.popularmovies.network.MoviesBoundaryCallback;
 
-import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class MovieRepositoryImpl implements MovieRepository {
 
+    private static final int PAGE_SIZE = 20;
     private ApiInterface service;
     private MoviesDao cache;
     private String apiKey;
@@ -32,13 +30,33 @@ public class MovieRepositoryImpl implements MovieRepository {
         this.cache = cache;
     }
 
+    //ToDo 3.3 :Replace occurrences of List<Movie> with PagedList<Movie>
+    public LiveData<PagedList<Movie>> getMovies() {
 
-    public LiveData<List<Movie>> getMovies() {
+        //ToDo 5: Get data source factory from the local cache
+        DataSource.Factory<Integer, Movie> movieFactory = cache.getMovies();
+
+
+        //ToDo 6: when the user reaches to the end of list we need to load more data from the network
+        // The BoundaryCallback will observe when the user reaches to the edges of the list and update the database with extra data
+        // lets create MoviesBoundaryCallback inside network package
+
+        //ToDo 7 : define instance of MoviesBoundaryCallback
+        MoviesBoundaryCallback moviesBoundaryCallback = new MoviesBoundaryCallback(service, cache, apiKey);
+
+        //ToDo 8: Build and configure a paged list using LivePagedListBuilder
+        LiveData<PagedList<Movie>> moviesList = new LivePagedListBuilder(movieFactory, PAGE_SIZE)
+                .setBoundaryCallback(moviesBoundaryCallback)
+                .build();
+
+
+        return moviesList;
+
 
         //Read from cache
-        LiveData<List<Movie>> moviesList = cache.getMovies();
+        //LiveData<List<Movie>> moviesList = cache.getMovies();
 
-        Call<MoviesResponse> call = service.getPopularMovies(apiKey);
+        /*Call<MoviesResponse> call = service.getPopularMovies(apiKey);
         call.enqueue(new Callback<MoviesResponse>() {
             @Override
             public void onResponse(@NonNull Call<MoviesResponse> call, @NonNull Response<MoviesResponse> response) {
@@ -62,8 +80,8 @@ public class MovieRepositoryImpl implements MovieRepository {
             public void onFailure(@NonNull Call<MoviesResponse> call, @NonNull Throwable t) {
             }
         });
+        */
 
-        return moviesList;
     }
 
 }

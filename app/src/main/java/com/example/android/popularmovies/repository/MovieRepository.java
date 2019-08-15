@@ -5,9 +5,8 @@ import android.arch.paging.PagedList;
 
 import com.example.android.popularmovies.model.Movie;
 
-import java.util.List;
-
 public interface MovieRepository {
 
-    LiveData<List<Movie>> getMovies();
+    //ToDo 3.2 :Replace occurrences of List<Movie> with PagedList<Movie>
+    LiveData<PagedList<Movie>> getMovies();
 }
