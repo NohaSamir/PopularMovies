@@ -16,15 +16,15 @@ public class Injection {
         return new MovieRepositoryImpl(provideAPIService(), provideMovieDao(context), provideAPIKey(context));
     }
 
-    private static ApiInterface provideAPIService() {
+    public static ApiInterface provideAPIService() {
         return ApiClient.getClient().create(ApiInterface.class);
     }
 
-    private static String provideAPIKey(Context context) {
+    public static String provideAPIKey(Context context) {
         return context.getString(R.string.api_key);
     }
 
-    private static MoviesDao provideMovieDao(Context context) {
+    public static MoviesDao provideMovieDao(Context context) {
         return MoviesDatabase.getInstance(context).moviesDao();
     }
 }

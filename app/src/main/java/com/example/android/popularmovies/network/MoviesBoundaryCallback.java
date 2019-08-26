@@ -17,7 +17,8 @@ import retrofit2.Response;
 
 public class MoviesBoundaryCallback extends PagedList.BoundaryCallback<Movie> {
 
-    private int lastRequestedPage = 1;
+    //ToDo 5: Start download from page 4 if th user scroll
+    private int lastRequestedPage = 4;
     private boolean isRequestInProgress = false;
 
     private ApiInterface service;
@@ -45,13 +46,14 @@ public class MoviesBoundaryCallback extends PagedList.BoundaryCallback<Movie> {
 
                 if (response.isSuccessful() && response.body() != null) {
 
-                    lastRequestedPage++;
-
                     executor.execute(() -> {
-                        if (lastRequestedPage == 1)
-                            cache.deleteAll();
+
+                        //ToDo 6: Stop clear our database worker will clear it
+                        /*if (lastRequestedPage == 1)
+                            cache.deleteAll();*/
 
                         cache.insert(response.body().getResults());
+                        lastRequestedPage++;
                     });
                 }
             }
