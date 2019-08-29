@@ -1,8 +1,8 @@
 package com.example.android.popularmovies.repository;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.annotation.NonNull;
 
 import com.example.android.popularmovies.model.Movie;
 import com.example.android.popularmovies.model.MoviesResponse;

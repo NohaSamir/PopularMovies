@@ -1,12 +1,12 @@
 package com.example.android.popularmovies.activity;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.example.android.popularmovies.Injection;
@@ -37,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
 
         final ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setAdapter(moviesAdapter);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         final MainViewModel mainViewModel = ViewModelProviders.of(this, new MainViewModelFactory(Injection.provideMovieRepository(this)))
                 .get(MainViewModel.class);
