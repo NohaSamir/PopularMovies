@@ -3,26 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".activity.MainActivity">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movies_recycler_view" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/movies_recycler_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:adapter="@{adapter}"
+                android:scrollbars="vertical"
+                app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:spanCount="3"
+                tools:listitem="@layout/list_items">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
     <data>
 
         <variable
             name="adapter"
             type="com.example.android.popularmovies.adapter.MoviesAdapter" />
     </data>
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activity.MainActivity">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/movies_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adapter="@{adapter}"
-            android:scrollbars="vertical"
-            app:layoutManager="android.support.v7.widget.GridLayoutManager"
-            app:spanCount="3" />
-
-    </android.support.constraint.ConstraintLayout>
 </layout>
