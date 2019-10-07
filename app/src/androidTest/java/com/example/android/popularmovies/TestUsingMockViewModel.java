@@ -58,12 +58,6 @@ public class TestUsingMockViewModel {
 
         Espresso.onView(withId(R.id.movies_recycler_view)).check(ViewAssertions.matches(isDisplayed()));
 
-        /*for (int i = 0 ; i < movies.size() ; i++) {
-
-            ViewInteraction viewInteraction = Espresso.onView(listMatcher().atPosition(i));
-            viewInteraction.check(ViewAssertions.matches(ViewMatchers.hasDescendant(ViewMatchers.withText(movies.get(i).getTitle()))));
-
-        }*/
     }
 
 
