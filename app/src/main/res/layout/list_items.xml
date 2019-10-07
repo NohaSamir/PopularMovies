@@ -14,7 +14,7 @@
     </data>
 
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/movies_layout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -50,5 +50,5 @@
             app:layout_constraintStart_toStartOf="@+id/item_movie_poster" />
 
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

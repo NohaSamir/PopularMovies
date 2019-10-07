@@ -1,7 +1,8 @@
 package com.example.android.popularmovies.view_model;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.example.android.popularmovies.model.Movie;
 import com.example.android.popularmovies.repository.MovieRepository;
@@ -13,7 +14,7 @@ public class MainViewModel extends ViewModel {
 
     private static final String TAG = MainViewModel.class.getSimpleName();
 
-    private LiveData<List<Movie>> movies;
+    private MutableLiveData<List<Movie>> movies;
 
     MainViewModel(MovieRepository repository) {
         movies = repository.getMovies();

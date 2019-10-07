@@ -1,8 +1,8 @@
 package com.example.android.popularmovies.repository;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.annotation.NonNull;
 
 import com.example.android.popularmovies.model.Movie;
 import com.example.android.popularmovies.model.MoviesResponse;
@@ -26,7 +26,7 @@ public class MovieRepositoryImpl implements MovieRepository {
     }
 
 
-    public LiveData<List<Movie>> getMovies() {
+    public MutableLiveData<List<Movie>> getMovies() {
 
         final MutableLiveData<List<Movie>> movies = new MutableLiveData<>();
         Call<MoviesResponse> call = service.getPopularMovies(apiKey);

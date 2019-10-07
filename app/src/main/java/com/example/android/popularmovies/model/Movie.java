@@ -1,6 +1,6 @@
 package com.example.android.popularmovies.model;
 
-import android.databinding.BindingAdapter;
+import androidx.databinding.BindingAdapter;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.ImageView;
@@ -43,6 +43,12 @@ public class Movie implements Parcelable {
     private Boolean video;
     @SerializedName("vote_average")
     private Double voteAverage;
+
+
+    public Movie(String title, String posterPath) {
+        this.posterPath = posterPath;
+        this.title = title;
+    }
 
     public Movie(String posterPath, boolean adult, String overview, String releaseDate,
                  List<Integer> genreIds, Integer id, String originalTitle, String originalLanguage,

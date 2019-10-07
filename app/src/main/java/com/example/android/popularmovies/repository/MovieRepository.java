@@ -1,6 +1,7 @@
 package com.example.android.popularmovies.repository;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.android.popularmovies.model.Movie;
 
@@ -9,5 +10,5 @@ import java.util.List;
 
 public interface MovieRepository {
 
-    LiveData<List<Movie>> getMovies();
+    MutableLiveData<List<Movie>> getMovies();
 }

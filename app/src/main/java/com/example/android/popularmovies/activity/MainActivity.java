@@ -1,13 +1,16 @@
 package com.example.android.popularmovies.activity;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.android.popularmovies.Injection;
 import com.example.android.popularmovies.R;
@@ -26,7 +29,15 @@ public class MainActivity extends AppCompatActivity {
     private Context mContext;
 
     private List<Movie> mMovies = new ArrayList<>();
-    MoviesAdapter moviesAdapter;
+    private MoviesAdapter moviesAdapter;
+
+
+    @VisibleForTesting
+    public ViewModelProvider.Factory viewModelFactory;
+
+    @VisibleForTesting
+    public MainViewModel mainViewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +49,10 @@ public class MainActivity extends AppCompatActivity {
         final ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         activityMainBinding.setAdapter(moviesAdapter);
 
-        final MainViewModel mainViewModel = ViewModelProviders.of(this, new MainViewModelFactory(Injection.provideMovieRepository(this)))
-                .get(MainViewModel.class);
+
+        viewModelFactory = new MainViewModelFactory(Injection.provideMovieRepository(this));
+
+        mainViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel.class);
 
         mainViewModel.getMovies().observe(this, new Observer<List<Movie>>() {
             @Override
