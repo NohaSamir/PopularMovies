@@ -9,8 +9,6 @@ import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.android.popularmovies.Injection;
 import com.example.android.popularmovies.R;
@@ -18,7 +16,6 @@ import com.example.android.popularmovies.adapter.MoviesAdapter;
 import com.example.android.popularmovies.databinding.ActivityMainBinding;
 import com.example.android.popularmovies.model.Movie;
 import com.example.android.popularmovies.view_model.MainViewModel;
-import com.example.android.popularmovies.view_model.MainViewModelFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Movie> mMovies = new ArrayList<>();
     private MoviesAdapter moviesAdapter;
-
-
-    @VisibleForTesting
-    public ViewModelProvider.Factory viewModelFactory;
 
     @VisibleForTesting
     public MainViewModel mainViewModel;
@@ -50,9 +43,7 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding.setAdapter(moviesAdapter);
 
 
-        viewModelFactory = new MainViewModelFactory(Injection.provideMovieRepository(this));
-
-        mainViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel.class);
+        mainViewModel = new Injection().provideMainViewModel(this);
 
         mainViewModel.getMovies().observe(this, new Observer<List<Movie>>() {
             @Override

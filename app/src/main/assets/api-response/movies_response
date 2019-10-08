@@ -1,0 +1,45 @@
+{
+  "page": 1,
+  "total_results": 10000,
+  "total_pages": 500,
+  "results": [
+    {
+      "popularity": 684.43,
+      "vote_count": 1164,
+      "video": false,
+      "poster_path": "\/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
+      "id": 475557,
+      "adult": false,
+      "backdrop_path": "\/hO7KbdvGOtDdeg0W4Y5nKEHeDDh.jpg",
+      "original_language": "en",
+      "original_title": "Joker",
+      "genre_ids": [
+        80,
+        18,
+        53
+      ],
+      "title": "Joker",
+      "vote_average": 8.7,
+      "overview": "During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.",
+      "release_date": "2019-10-04"
+    },
+    {
+      "popularity": 245.811,
+      "vote_count": 1333,
+      "video": false,
+      "poster_path": "\/zfE0R94v1E8cuKAerbskfD3VfUt.jpg",
+      "id": 474350,
+      "adult": false,
+      "backdrop_path": "\/8moTOzunF7p40oR5XhlDvJckOSW.jpg",
+      "original_language": "en",
+      "original_title": "It Chapter Two",
+      "genre_ids": [
+        27
+      ],
+      "title": "It Chapter Two",
+      "vote_average": 7,
+      "overview": "27 years after overcoming the malevolent supernatural entity Pennywise, the former members of the Losers' Club, who have grown up and moved away from Derry, are brought back together by a devastating phone call.",
+      "release_date": "2019-09-06"
+    }
+  ]
+}
