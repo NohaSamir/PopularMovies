@@ -97,4 +97,13 @@ On This branch we will develop the first one and develop the second feature on L
 - This guide introduce paging from local + network
 
 ##### Note: you can accumulate on RoomDBRseult branch and follow ToDo steps
+
+--------------------------------
+
+## 9- Testing
+
+- Test Using Mock ViewModel
+- Test Using Mock WebServer 
+
+##### Note: you can accumulate on RepositoryRseult branch and follow ToDo steps
    
