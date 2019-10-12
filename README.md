@@ -8,7 +8,7 @@ Simple Movies application , I will apply every architecture component on a separ
 ##  API Hints
 
 To fetch popular movies, you will use the API from themoviedb.org.
-If you don’t already have an account, you will need to [create account](https://www.themoviedb.org/account/signup) , in order to request an [API Key](https://developers.themoviedb.org/3/getting-started/introduction) . 
+If you don’t already have an account, First you will need to [create account](https://www.themoviedb.org/account/signup) ,Second in order to request an API Key follow this [link](https://developers.themoviedb.org/3/getting-started/introduction) . 
    
 In your request for a key, state that your usage will be for educational/non-commercial use. You will also need to provide some personal information to complete the request. Once you submit your request, you should receive your key via email shortly after.
 
