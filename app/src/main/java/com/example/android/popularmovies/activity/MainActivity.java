@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.example.android.popularmovies.R;
 import com.example.android.popularmovies.adapter.MoviesAdapter;
@@ -20,7 +21,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static String API_KEY ;
+    private static String API_KEY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +43,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
 
-                List<Movie> movies = response.body().getResults();
-                recyclerView.setAdapter(new MoviesAdapter(movies, R.layout.list_items, getApplicationContext()));
+                List<Movie> movies = null;
+                if (response.body() != null) {
+                    movies = response.body().getResults();
+                    recyclerView.setAdapter(new MoviesAdapter(movies, R.layout.list_items, getApplicationContext()));
+                } else {
+                    showError();
+                }
             }
 
             @Override
@@ -51,5 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void showError() {
+        Toast.makeText(this, "Add your API address", Toast.LENGTH_LONG).show();
     }
 }
